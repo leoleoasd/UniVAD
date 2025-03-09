@@ -31,7 +31,7 @@ def read_config(config_path):
 
 
 for category in categories:
-    image_paths = sorted(glob.glob(f"./data/mvtec/{category}/test/*/*.png"))[:5]
+    image_paths = sorted(glob.glob(f"./data/mvtec/{category}/test/*/*.png"))
     config = read_config(f"./configs/class_histogram/{category}.yaml")
     os.makedirs(f"{mask_path}/{category}", exist_ok=True)
     grounding_segmentation(
@@ -39,7 +39,7 @@ for category in categories:
     )
 
 for category in categories:
-    image_paths = sorted(glob.glob(f"./data/mvtec/{category}/train/*/*.png"))[:5]
+    image_paths = sorted(glob.glob(f"./data/mvtec/{category}/train/*/*.png"))
     config = read_config(f"./configs/class_histogram/{category}.yaml")
     os.makedirs(f"{mask_path}/{category}", exist_ok=True)
     grounding_segmentation(
@@ -70,7 +70,7 @@ def read_config(config_path):
 
 
 for category in categories:
-    image_paths = sorted(glob.glob(f"./data/VisA_pytorch/1cls/{category}/test/*/*.JPG"))[:5]
+    image_paths = sorted(glob.glob(f"./data/VisA_pytorch/1cls/{category}/test/*/*.JPG"))
     config = read_config(f"./configs/class_histogram/{category}.yaml")
     os.makedirs(f"{mask_path}/{category}", exist_ok=True)
     grounding_segmentation(
@@ -78,7 +78,7 @@ for category in categories:
     )
 
 for category in categories:
-    image_paths = sorted(glob.glob(f"./data/VisA_pytorch/1cls/{category}/train/*/*.JPG"))[:5]
+    image_paths = sorted(glob.glob(f"./data/VisA_pytorch/1cls/{category}/train/*/*.JPG"))
     config = read_config(f"./configs/class_histogram/{category}.yaml")
     os.makedirs(f"{mask_path}/{category}", exist_ok=True)
     grounding_segmentation(
@@ -98,7 +98,7 @@ def read_config(config_path):
 
 
 for category in categories:
-    image_paths = sorted(glob.glob(f"./data/mvtec_loco_caption/{category}/test/*/*.png"))[:5]
+    image_paths = sorted(glob.glob(f"./data/mvtec_loco_caption/{category}/test/*/*.png"))
     config = read_config(f"./configs/class_histogram/{category}.yaml")
     os.makedirs(f"{mask_path}/{category}", exist_ok=True)
     grounding_segmentation(
@@ -106,7 +106,7 @@ for category in categories:
     )
 
 for category in categories:
-    image_paths = sorted(glob.glob(f"./data/mvtec_loco_caption/{category}/train/*/*.png"))[:5]
+    image_paths = sorted(glob.glob(f"./data/mvtec_loco_caption/{category}/train/*/*.png"))
     config = read_config(f"./configs/class_histogram/{category}.yaml")
     os.makedirs(f"{mask_path}/{category}", exist_ok=True)
     grounding_segmentation(
@@ -130,7 +130,7 @@ def read_config(config_path):
 
 
 for category in categories:
-    image_paths = sorted(glob.glob(f"./data/{category}/test/*/*.png"))[:5]
+    image_paths = sorted(glob.glob(f"./data/{category}/test/*/*.png"))
     config = read_config(f"./configs/class_histogram/{category}.yaml")
     os.makedirs(f"{mask_path}/{category}", exist_ok=True)
     grounding_segmentation(
@@ -138,7 +138,7 @@ for category in categories:
     )
 
 for category in categories:
-    image_paths = sorted(glob.glob(f"./data/{category}/train/*/*.png"))[:5]
+    image_paths = sorted(glob.glob(f"./data/{category}/train/*/*.png"))
     config = read_config(f"./configs/class_histogram/{category}.yaml")
     os.makedirs(f"{mask_path}/{category}", exist_ok=True)
     grounding_segmentation(
@@ -158,7 +158,7 @@ def read_config(config_path):
 
 
 for category in categories:
-    image_paths = sorted(glob.glob(f"./data/{category}/test/*/*.jpeg"))[:5]
+    image_paths = sorted(glob.glob(f"./data/{category}/test/*/*.jpeg"))
     config = read_config(f"./configs/class_histogram/{category}.yaml")
     os.makedirs(f"{mask_path}/{category}", exist_ok=True)
     grounding_segmentation(
@@ -166,7 +166,7 @@ for category in categories:
     )
 
 for category in categories:
-    image_paths = sorted(glob.glob(f"./data/{category}/train/*/*.jpeg"))[:5]
+    image_paths = sorted(glob.glob(f"./data/{category}/train/*/*.jpeg"))
     config = read_config(f"./configs/class_histogram/{category}.yaml")
     os.makedirs(f"{mask_path}/{category}", exist_ok=True)
     grounding_segmentation(
