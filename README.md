@@ -66,7 +66,7 @@ wget https://github.com/IDEA-Research/GroundingDINO/releases/download/v0.1.0-alp
 #### Medical datasets
 
 - The data in the medical dataset we used are mainly obtained from [BMAD](https://github.com/DorisBao/BMAD), and we organized it according to the MVTec format
-- Download from [This OneDrive Link](#) and put them into `data/`
+- Download from [This OneDrive Link](https://1drv.ms/u/s!AopsN_HMhJeckoJT-3yF_pwQMSn9OA?e=nRW1wA) and put them into `data/`
 
 #### Data format
 The prepared data format should be as follows
