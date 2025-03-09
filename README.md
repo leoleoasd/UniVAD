@@ -8,9 +8,9 @@ Welcome to the official repository for "UniVAD: A Training-free Unified Model fo
 
 UniVAD operates by leveraging a few normal samples as references during testing to detect anomalies in previously unseen objects. It consists of three key components:
 
-Contextual Component Clustering (C³): Segments components within images accurately by combining clustering techniques with vision foundation models.
-Component-Aware Patch Matching (CAPM): Detects structural anomalies by matching patch-level features within each component.
-Graph-Enhanced Component Modeling (GECM): Identifies logical anomalies by modeling relationships between image components through graph-based feature aggregation.
+- Contextual Component Clustering ($C^3$): Segments components within images accurately by combining clustering techniques with vision foundation models.
+- Component-Aware Patch Matching (CAPM): Detects structural anomalies by matching patch-level features within each component.
+- Graph-Enhanced Component Modeling (GECM): Identifies logical anomalies by modeling relationships between image components through graph-based feature aggregation.
 Our experiments on nine datasets spanning industrial, logical, and medical domains demonstrate that UniVAD achieves state-of-the-art performance in few-shot anomaly detection tasks, outperforming domain-specific models and establishing a new paradigm for unified visual anomaly detection.
 
 ![](figures/intro.jpg)
