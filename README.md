@@ -24,7 +24,7 @@ Our experiments on nine datasets spanning industrial, logical, and medical domai
 ### Environment Installation
 Clone the repository locally:
 ```
-git clone https://github.com/FantasticGNU/UniVAD.git
+git clone --recurse-submodules https://github.com/FantasticGNU/UniVAD.git
 ```
 
 Install the required packages:
