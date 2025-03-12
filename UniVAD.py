@@ -278,6 +278,7 @@ class UniVAD(nn.Module):
             ("./masks/" + image_path.split('/data/')[-1])
             .replace(".png", "/grounding_mask.png")
             .replace(".JPG", "/grounding_mask.png")
+            .replace(".jpeg", "/grounding_mask.png")
         )
         # print(query_sam_mask_path)
         query_tmp_mask = np.array(
