@@ -317,7 +317,7 @@ def grounding_segmentation(img_paths,save_path,config):
             masks = filter_by_combine(masks)
         color_mask = color_masks(masks)
         masks = merge_masks(masks)
-        image_name = '/'.join((image_path.split(".")[0]).split("/")[-3:])
+        image_name = '/'.join((image_path.split(".")[-2]).split("/")[-3:])
         os.makedirs(f"{save_path}/{image_name}",exist_ok=True)
         cv2.imwrite(f"{save_path}/{image_name}/grounding_mask.png",masks)
         cv2.imwrite(f"{save_path}/{image_name}/grounding_background.png",background)
