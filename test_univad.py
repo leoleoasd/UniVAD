@@ -257,7 +257,7 @@ if __name__ == "__main__":
                 ]
             elif dataset_name == "mvtec_loco":
                 normal_image_paths = [
-                    "./data/mvtec_loco/"
+                    "./data/mvtec_loco_caption/"
                     + cls_name.replace(" ", "_")
                     + "/train/good/"
                     + str(i).zfill(3)
