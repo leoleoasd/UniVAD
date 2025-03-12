@@ -37,3 +37,4 @@ yapf
 ram @ git+https://github.com/xinyu1205/recognize-anything.git
 segment_anything @ git+https://github.com/facebookresearch/segment-anything.git
 segment-anything-hq
+prefetch_generator
