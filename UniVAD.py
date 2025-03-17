@@ -658,7 +658,7 @@ class UniVAD(nn.Module):
         ]
 
         H, W = grounded_sam_masks[0][0].shape
-        object_ratio = (grounded_sam_masks[0][0].sum() / 255) / (H * W)
+        object_ratio = (torch.sum(sorted(grounded_sam_masks[0], key=lambda x:torch.sum(x), reverse=True)[0]) / 255) / (H * W)
 
         if object_ratio > 0.8:
             self.gate = object_type.TEXTURE
