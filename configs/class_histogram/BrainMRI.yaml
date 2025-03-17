@@ -1,5 +1,5 @@
 grounding_config: 
-  box_threshold: 0.25
-  text_threshold: 0.25
-  text_prompt: "MRI . brain . brainMRI" # . grain . mixture
+  box_threshold: 0.3
+  text_threshold: 0.3
+  text_prompt: "brain" # . grain . mixture
   background_prompt: ""
