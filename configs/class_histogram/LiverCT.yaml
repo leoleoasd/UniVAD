@@ -1,5 +1,5 @@
 grounding_config: 
-  box_threshold: 0.15
-  text_threshold: 0.15
-  text_prompt: "CT . Liver . LiverCT" # . grain . mixture
+  box_threshold: 0.5
+  text_threshold: 0.5
+  text_prompt: "CT"
   background_prompt: ""
