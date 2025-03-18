@@ -665,7 +665,7 @@ class UniVAD(nn.Module):
         else:
             object_ratio = 1
 
-        if object_ratio > 0.8:
+        if object_ratio > 0.65 and len(grounded_sam_masks[0]) <= 2:
             self.gate = object_type.TEXTURE
         elif len(grounded_sam_masks[0]) == 1:
             self.gate = object_type.SINGLE
