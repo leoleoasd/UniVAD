@@ -215,7 +215,7 @@ if __name__ == "__main__":
     )
 
     with torch.no_grad():
-        obj_list = [x.replace("_", " ") for x in test_data.get_cls_names()] + ["object"]
+        obj_list = [x.replace("_", " ") for x in test_data.get_cls_names()]
 
     results = {}
     results["cls_names"] = []
