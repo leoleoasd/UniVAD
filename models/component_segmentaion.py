@@ -291,32 +291,32 @@ def grounding_segmentation(img_paths,save_path,config):
 
         boxes_filt = boxes_filt.cpu()
 
-        
-        
-
-        transformed_boxes = predictor.transform.apply_boxes_torch(boxes_filt, image.shape[:2]).to(device)
-
-        masks, _, _ = predictor.predict_torch(
-            point_coords = None,
-            point_labels = None,
-            boxes = transformed_boxes.to(device),
-            multimask_output = False,
-        )
-
-
-        if len(background_box) != 0:
-            backgrounds = torch.stack([masks[i] for i in background_box])
-            background = torch.sum(backgrounds,dim=0).squeeze().cpu().numpy()
-            background = np.where(background!=0,255,0).astype(np.uint8)
+        if len(boxes_filt) == 0:
+            masks = np.ones((W, H))
         else:
-            background = np.zeros_like(masks[0][0].cpu().numpy()).astype(np.uint8)
-
-        masks = torch.stack([masks[i] for i in range(len(masks)) if i not in background_box])
-        masks = turn_binary_to_int(masks[:,0,:,:].cpu().numpy())
-        if config.get('filter_by_combine',False):
-            masks = filter_by_combine(masks)
-        color_mask = color_masks(masks)
-        masks = merge_masks(masks)
+            transformed_boxes = predictor.transform.apply_boxes_torch(boxes_filt, image.shape[:2]).to(device)
+    
+            masks, _, _ = predictor.predict_torch(
+                point_coords = None,
+                point_labels = None,
+                boxes = transformed_boxes.to(device),
+                multimask_output = False,
+            )
+    
+    
+            if len(background_box) != 0:
+                backgrounds = torch.stack([masks[i] for i in background_box])
+                background = torch.sum(backgrounds,dim=0).squeeze().cpu().numpy()
+                background = np.where(background!=0,255,0).astype(np.uint8)
+            else:
+                background = np.zeros_like(masks[0][0].cpu().numpy()).astype(np.uint8)
+    
+            masks = torch.stack([masks[i] for i in range(len(masks)) if i not in background_box])
+            masks = turn_binary_to_int(masks[:,0,:,:].cpu().numpy())
+            if config.get('filter_by_combine',False):
+                masks = filter_by_combine(masks)
+            color_mask = color_masks(masks)
+            masks = merge_masks(masks)
         image_name = '/'.join((image_path.split(".")[-2]).split("/")[-3:])
         os.makedirs(f"{save_path}/{image_name}",exist_ok=True)
         cv2.imwrite(f"{save_path}/{image_name}/grounding_mask.png",masks)
