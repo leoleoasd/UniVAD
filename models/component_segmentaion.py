@@ -92,7 +92,7 @@ def color_masks(masks):
 
 def merge_masks(masks):
     # remove empty masks
-    masks = filter_small_masks(masks,threshold=0.001)
+    # masks = filter_small_masks(masks,threshold=0.001)
 
     result_mask = np.zeros_like(masks[0],dtype=np.uint8)
     # masks = sorted(masks,key=lambda x:np.sum(x),reverse=True)
