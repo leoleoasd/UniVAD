@@ -285,6 +285,8 @@ class UniVAD(nn.Module):
             Image.open(query_sam_mask_path).resize((self.image_size, self.image_size))
         )
         query_sam_masks = split_masks_from_one_mask_torch(torch.tensor(query_tmp_mask))
+        if len(query_sam_masks) == 0:
+            query_sam_masks = [torch.ones((self.image_size, self.image_size))]
 
         if self.gate == object_type.SINGLE:
 
@@ -657,8 +659,11 @@ class UniVAD(nn.Module):
             for x in grounded_sam_mask_paths
         ]
 
-        H, W = grounded_sam_masks[0][0].shape
-        object_ratio = (torch.sum(sorted(grounded_sam_masks[0], key=lambda x:torch.sum(x), reverse=True)[0]) / 255) / (H * W)
+        if len(grounded_sam_masks[0]) > 0:
+            H, W = grounded_sam_masks[0][0].shape
+            object_ratio = (torch.sum(sorted(grounded_sam_masks[0], key=lambda x:torch.sum(x), reverse=True)[0]) / 255) / (H * W)
+        else:
+            object_ratio = 1
 
         if object_ratio > 0.8:
             self.gate = object_type.TEXTURE
