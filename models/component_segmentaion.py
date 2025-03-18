@@ -141,7 +141,7 @@ def split_masks_from_one_mask_torch(masks):
     for i in range(1,torch.max(masks)+1):
         mask = torch.zeros_like(masks)
         mask[masks==i] = 255
-        if torch.sum(mask!=0) / (H * W) > 0.01:
+        if torch.sum(mask!=0) / (H * W) > 0.001:
             result_masks.append(mask)
     return result_masks
 
