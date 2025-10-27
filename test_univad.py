@@ -16,6 +16,7 @@ from UniVAD import UniVAD
 
 from datasets.mvtec import MVTecDataset
 from datasets.visa import VisaDataset
+from datasets.madsim import MadsimDataset
 from datasets.mvtec_loco import MVTecLocoDataset
 from datasets.brainmri import BrainMRIDataset
 from datasets.his import HISDataset
@@ -145,6 +146,13 @@ if __name__ == "__main__":
         )
     elif dataset_name == "visa":
         test_data = VisaDataset(
+            root=dataset_dir,
+            transform=transform,
+            target_transform=transform,
+            mode="test",
+        )
+    elif dataset_name == "madsim":
+        test_data = MadsimDataset(
             root=dataset_dir,
             transform=transform,
             target_transform=transform,
@@ -289,6 +297,15 @@ if __name__ == "__main__":
                         + ".JPG"
                         for i in range(args.round, args.round + k_shot)
                     ]
+            elif dataset_name == "madsim":
+                normal_image_paths = [
+                    "./data/madsim/"
+                    + cls_name.replace(" ", "_")
+                    + "/train/good/"
+                    + str(i)
+                    + ".png"
+                    for i in range(args.round, args.round + k_shot)
+                ]
             elif dataset_name in [
                 "his",
                 "oct17",

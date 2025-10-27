@@ -1,0 +1,60 @@
+[project]
+name = "univad"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "addict>=2.4.0",
+    "clip>=0.2.0",
+    "einops>=0.8.1",
+    "fairscale>=0.4.13",
+    "fiftyone>=1.9.0",
+    "ftfy>=6.3.1",
+    "gradio==4.21.0",
+    "huggingface-hub>=0.36.0",
+    "ipdb>=0.13.13",
+    "kornia>=0.8.1",
+    "matplotlib>=3.10.7",
+    "numpy>=1.26.4",
+    "opencv-python>=4.11.0.86",
+    "opencv-python-headless>=4.11.0.86",
+    "pillow>=10.4.0",
+    "prefetch-generator>=1.0.3",
+    "pycocoevalcap>=1.2",
+    "pycocotools>=2.0.10",
+    "pydensecrf",
+    "pyyaml>=6.0.3",
+    "ram",
+    "regex>=2025.10.23",
+    "requests>=2.32.5",
+    "scikit-image>=0.25.2",
+    "scikit-learn>=1.7.2",
+    "scipy>=1.15.3",
+    "segment-anything",
+    "segment-anything-hq>=0.3",
+    "setuptools>=80.9.0",
+    "supervision>=0.26.1",
+    "termcolor>=3.2.0",
+    "timm>=1.0.21",
+    "torch==2.2.0",
+    "torchmetrics>=1.8.2",
+    "torchvision>=0.17.0",
+    "tqdm>=4.67.1",
+    "transformers>=4.57.1",
+    "typer>=0.20.0",
+    "wget>=3.2",
+    "yapf>=0.43.0",
+    "groundingdino==0.1.0",
+    "tensorboard>=2.20.0",
+]
+
+[tool.uv.sources]
+pydensecrf = { git = "https://github.com/lucasb-eyer/pydensecrf.git" }
+ram = { git = "https://github.com/xinyu1205/recognize-anything.git" }
+segment-anything = { git = "https://github.com/facebookresearch/segment-anything.git" }
+groundingdino = { path = "models/GroundingDINO", editable = true }
+
+
+[tool.uv]
+no-build-isolation-package = ["groundingdino"]
