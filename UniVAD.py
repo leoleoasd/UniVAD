@@ -467,6 +467,8 @@ class UniVAD(nn.Module):
                 dino_patch_tokens_reshaped = dino_patch_tokens.view(-1, 1, 1536)[
                     thresh > 0
                 ]
+                print(f"normal_dino_part_patch_features={self.normal_dino_part_patch_features}")
+                print(f"{query_mask_idxs[j]=}")
                 dino_normal_tokens_reshaped = self.normal_dino_part_patch_features[
                     query_mask_idxs[j]
                 ].reshape(1, -1, 1536)
@@ -828,7 +830,7 @@ class UniVAD(nn.Module):
                 "dino_image": [],
                 "geo": [],
             }
-
+            print(f"833, {self.normal_dino_part_patch_features=}")
             for i in range(self.shot):
                 image = np.array(
                     Image.open(image_paths[i])
@@ -868,6 +870,8 @@ class UniVAD(nn.Module):
                     thresh[thresh > 0] = 1
 
                     selected_patch_features = self.normal_dino_patches[i][thresh]
+                    print(f"selected_patch_features={selected_patch_features}")
+                    print(f"874, {normal_mask_idxs=} {normal_mask_idxs[j]=}")
                     self.normal_dino_part_patch_features[normal_mask_idxs[j]].append(
                         selected_patch_features
                     )
@@ -891,24 +895,29 @@ class UniVAD(nn.Module):
                         features[feature_name]
                     )
 
-            for j in range(len(normal_mask_idxs)):
-                if self.normal_dino_part_patch_features[normal_mask_idxs[j]] == []:
+            for j in range(len(self.normal_dino_part_patch_features)):
+                if self.normal_dino_part_patch_features[j] == []:
                     continue
-                self.normal_dino_part_patch_features[normal_mask_idxs[j]] = torch.cat(
-                    self.normal_dino_part_patch_features[normal_mask_idxs[j]], dim=0
+                self.normal_dino_part_patch_features[j] = torch.cat(
+                    self.normal_dino_part_patch_features[j], dim=0
                 )
 
                 for layer in range(len(self.normal_patch_tokens)):
                     if layer % 2 == 0:
                         continue
-                    self.normal_clip_part_patch_features[layer][normal_mask_idxs[j]] = (
+                    self.normal_clip_part_patch_features[layer][j] = (
                         torch.cat(
                             self.normal_clip_part_patch_features[layer][
-                                normal_mask_idxs[j]
+                                j
                             ],
                             dim=0,
                         )
                     )
+            print(f"{normal_mask_idxs=}")
+            print(f"normal_dino_part_patch_features={self.normal_dino_part_patch_features}")
+            if any(isinstance(i, list) and len(i) > 0 for i in self.normal_dino_part_patch_features):
+                print(f"normal_dino_part_patch_features is a list")
+                input()
 
             for feature_name in ["area", "color", "position", "clip_image", "dino_image"]:
                 self.normal_component_feats[feature_name] = torch.cat(

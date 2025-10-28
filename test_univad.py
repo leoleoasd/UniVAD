@@ -337,6 +337,9 @@ if __name__ == "__main__":
                 "image_path": normal_image_paths,
             }
             UniVAD_model.setup(setup_data)
+            print(f"Setup {cls_name} with {normal_image_paths}")
+            print(f"{UniVAD_model.gate=}")
+            print(f"{UniVAD_model.normal_dino_part_patch_features=}")
             cls_last = cls_name
 
         with torch.no_grad():
